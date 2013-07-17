@@ -1,0 +1,4 @@
+startup_message       off             # default: on
+# Autoload two screen tabs for vim/bash.
+# screen -t vim 0
+# screen -t bash 1
