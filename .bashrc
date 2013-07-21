@@ -1,3 +1,44 @@
+# .bashrc file
+# By Balaji S. Srinivasan (balajis@stanford.edu)
+#
+# Concepts:
+#
+#    1) .bashrc is the *non-login* config for bash, run in scripts and after
+#        first connection.
+#    2) .bash_profile is the *login* config for bash, launched upon first connection.
+#    3) .bash_profile imports .bashrc, but not vice versa.
+#    4) .bashrc imports .bashrc_custom, which can be used to override
+#        variables specified here.
+#           
+# When using GNU screen:
+#
+#    1) .bash_profile is loaded the first time you login, and should be used
+#       only for paths and environmental settings
+
+#    2) .bashrc is loaded in each subsequent screen, and should be used for
+#       aliases and things like writing to .bash_eternal_history (see below)
+#
+# Do 'man bashrc' for the long version or see here:
+# http://en.wikipedia.org/wiki/Bash#Startup_scripts
+#
+# When Bash starts, it executes the commands in a variety of different scripts.
+#
+#   1) When Bash is invoked as an interactive login shell, it first reads
+#      and executes commands from the file /etc/profile, if that file
+#      exists. After reading that file, it looks for ~/.bash_profile,
+#      ~/.bash_login, and ~/.profile, in that order, and reads and executes
+#      commands from the first one that exists and is readable.
+#
+#   2) When a login shell exits, Bash reads and executes commands from the
+#      file ~/.bash_logout, if it exists.
+#
+#   3) When an interactive shell that is not a login shell is started
+#      (e.g. a GNU screen session), Bash reads and executes commands from
+#      ~/.bashrc, if that file exists. This may be inhibited by using the
+#      --norc option. The --rcfile file option will force Bash to read and
+#      execute commands from file instead of ~/.bashrc.
+
+
 
 # -----------------------------------
 # -- 1.1) Set up umask permissions --
@@ -98,26 +139,26 @@ if [ "$PS1" ]; then
     # define a bash function which escapes the string before writing it; if you
     # have a fix for that which doesn't slow the command down, please submit
     # a patch or pull request.
-#    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -e $$\\t$USER\\t$HOSTNAME\\tscreen $WINDOW\\t`date +%D%t%T%t%Y%t%s`\\t$PWD"$(history 1)" >> ~/.bash_eternal_history'
-#
-#    # Turn on checkwinsize
-#    shopt -s checkwinsize
-#
-#    #Prompt edited from default
-#    [ "$PS1" = "\\s-\\v\\\$ " ] && PS1="[\u \w]\\$ "
-#
-#    if [ "x$SHLVL" != "x1" ]; then # We're not a login shell
-#        for i in /etc/profile.d/*.sh; do
-#	    if [ -r "$i" ]; then
-#	        . $i
-#	    fi
-#	done
-#    fi
-#fi
+    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -e $$\\t$USER\\t$HOSTNAME\\tscreen $WINDOW\\t`date +%D%t%T%t%Y%t%s`\\t$PWD"$(history 1)" >> ~/.bash_eternal_history'
+
+    # Turn on checkwinsize
+    shopt -s checkwinsize
+
+    #Prompt edited from default
+    [ "$PS1" = "\\s-\\v\\\$ " ] && PS1="[\u \w]\\$ "
+
+    if [ "x$SHLVL" != "x1" ]; then # We're not a login shell
+        for i in /etc/profile.d/*.sh; do
+	    if [ -r "$i" ]; then
+	        . $i
+	    fi
+	done
+    fi
+fi
 
 # Append to history
 # See: http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
-#shopt -s histappend
+shopt -s histappend
 
 # Make prompt informative
 # See:  http://www.ukuug.org/events/linux2003/papers/bash_tips/
@@ -150,8 +191,8 @@ alias treeacl='tree -A -C -L 2'
 # 2.3) Text and editor commands
 #alias em='emacs -nw'     # No X11 windows
 #alias eqq='emacs -nw -Q' # No config and no X11
-export EDITOR='vim'
-export VISUAL='vim' 
+#export EDITOR='emacs -nw'
+#export VISUAL='emacs -nw' 
 
 # 2.4) grep options
 export GREP_OPTIONS='--color=auto'
@@ -165,18 +206,18 @@ export LC_ALL=POSIX
 
 # 2.6) Install rlwrap if not present
 # http://stackoverflow.com/a/677212
-#command -v rlwrap >/dev/null 2>&1 || { echo >&2 "Install rlwrap to use node: sudo apt-get install -y rlwrap";}
+command -v rlwrap >/dev/null 2>&1 || { echo >&2 "Install rlwrap to use node: sudo apt-get install -y rlwrap";}
 
 # 2.7) node.js and nvm
 # http://nodejs.org/api/repl.html#repl_repl
-#alias node="env NODE_NO_READLINE=1 rlwrap node"
-#alias node_repl="node -e \"require('repl').start({ignoreUndefined: true})\""
-#export NODE_DISABLE_COLORS=1
-#if [ -s ~/.nvm/nvm.sh ]; then
-#    NVM_DIR=~/.nvm
-#    source ~/.nvm/nvm.sh
-#    nvm use v0.10.12 &> /dev/null # silence nvm use; needed for rsync
-#fi
+alias node="env NODE_NO_READLINE=1 rlwrap node"
+alias node_repl="node -e \"require('repl').start({ignoreUndefined: true})\""
+export NODE_DISABLE_COLORS=1
+if [ -s ~/.nvm/nvm.sh ]; then
+    NVM_DIR=~/.nvm
+    source ~/.nvm/nvm.sh
+    nvm use v0.10.12 &> /dev/null # silence nvm use; needed for rsync
+fi
 
 ## ------------------------------
 ## -- 3) User-customized code  --
