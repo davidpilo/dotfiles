@@ -8,7 +8,10 @@ set hlsearch
 
 " Add recently accessed projects menu (project plugin)
 "set viminfo^=!
- 
+
+" Cool little trick to switch buffers with F5
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
