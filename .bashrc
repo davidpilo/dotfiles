@@ -161,8 +161,11 @@ fi
 shopt -s histappend
 
 # Make prompt informative
-# See:  http://www.ukuug.org/events/linux2003/papers/bash_tips/
-PS1="\[\033[0;34m\][\u@\h:\w]$\[\033[0m\]"
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+export PS1="\[\033[00m\]\u@\h\[\033[01;34m\] \W \[\033[31m\]\$(parse_git_branch)\[\033[00m\]$\[\033[00m\] "
+
 
 ## -----------------------
 ## -- 2) Set up aliases --
