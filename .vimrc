@@ -6,6 +6,8 @@ filetype plugin indent on
 "set antialias
 set hlsearch
 
+let g:NERDTreeDirArrows=0 " This fixes the Arrows not showing in the charset is off
+
 " Add recently accessed projects menu (project plugin)
 "set viminfo^=!
 
