@@ -1,12 +1,9 @@
 filetype on  " Automatically detect file types.
 "set nocompatible  " We don't want vi compatibility.
-filetype plugin indent on 
 "colorscheme molokai
 "set guifont=Monaco:h14
 "set antialias
 set hlsearch
-
-let g:NERDTreeDirArrows=0 " This fixes the Arrows not showing in the charset is off
 
 " Add recently accessed projects menu (project plugin)
 "set viminfo^=!
@@ -34,16 +31,28 @@ set ruler  " Ruler on
 set nu  " Line numbers on
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
 " colorscheme vividchalk  " Uncomment this to set a default theme
- " Formatting (some of these are for coding in C and C++)
-set ts=2  " Tabs are 2 spaces
-"set bs=2  " Backspace over everything in insert mode
-set shiftwidth=2  " Tabs under smart indent
+" Formatting (some of these are for coding in C and C++)
+" set ts=4  " Tabs are 2 spaces
+" set bs=2  " Backspace over everything in insert mode
+" set shiftwidth=2  " Tabs under smart indent
 set nocp incsearch
-set cindent
+
+" Indentation
+filetype plugin indent on 
+" set cindent
 set autoindent
+
+" Tabs
 set smarttab
 set expandtab
- 
+" size of a hard tabstop
+set tabstop=4
+" size of an "indent"
+set shiftwidth=4
+" a combination of spaces and tabs are used to simulate tab stops at a width
+" other than the (hard)tabstop
+set softtabstop=4
+
 " Visual
 set showmatch  " Show matching brackets.
 set mat=5  " Bracket blinking.
