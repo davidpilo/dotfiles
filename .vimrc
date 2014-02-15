@@ -1,17 +1,22 @@
-filetype on  " Automatically detect file types.
 "set nocompatible  " We don't want vi compatibility.
 "colorscheme molokai
 "set guifont=Monaco:h14
 "set antialias
 set hlsearch
+set background=light
+colorscheme solarized
+
 
 " Add recently accessed projects menu (project plugin)
 "set viminfo^=!
 
+" MAPPINGS
 " Cool little trick to switch buffers to last buffer with F2
 :nnoremap <F2> :b#<Enter>
 " Cool little trick to switch buffers with F5
 :nnoremap <F5> :buffers<CR>:buffer<Space>
+" Maps ESC to kj
+:imap kj <Esc>
 
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
@@ -37,9 +42,8 @@ set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
 " set shiftwidth=2  " Tabs under smart indent
 set nocp incsearch
 
-" Indentation
+set encoding=utf-8
 filetype plugin indent on 
-" set cindent
 set autoindent
 
 " Tabs
