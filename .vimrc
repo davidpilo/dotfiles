@@ -1,3 +1,10 @@
+" Adding something for pathogen.vim to work we do this first
+" it is better to do it before enabling syntax and indent.
+" More info here:
+" http://stackoverflow.com/questions/17630393/filetype-on-or-filetype-off
+execute pathogen#infect()
+
+
 "set nocompatible  " We don't want vi compatibility.
 "colorscheme molokai
 "set guifont=Monaco:h14
@@ -68,8 +75,6 @@ set laststatus=2  " Always show status line.
 set mousehide  " Hide mouse after chars typed
 set mouse=a  " Mouse in all modes
 
-" Adding something for pathogen.vim to work
-execute pathogen#infect()
 
 " Adding this for Nerdtree to autoload
 autocmd vimenter * NERDTree
