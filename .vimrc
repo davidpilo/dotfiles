@@ -11,7 +11,7 @@ execute pathogen#infect()
 "set antialias
 set hlsearch
 set background=light
-colorscheme solarized
+" colorscheme solarized
 
 
 " Add recently accessed projects menu (project plugin)
