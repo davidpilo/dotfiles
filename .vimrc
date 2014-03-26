@@ -11,8 +11,7 @@ execute pathogen#infect()
 "set antialias
 set hlsearch
 set background=light
-" colorscheme solarized
-
+colorscheme solarized
 
 " Add recently accessed projects menu (project plugin)
 "set viminfo^=!
@@ -24,6 +23,8 @@ set background=light
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 " Maps ESC to kj
 :imap kj <Esc>
+" Map Tagbar (requires exuberant ctags)
+nmap <F8> :TagbarToggle<CR>
 
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
