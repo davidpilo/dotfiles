@@ -9,7 +9,8 @@ execute pathogen#infect()
 "colorscheme molokai
 "set guifont=Monaco:h14
 "set antialias
-set hlsearch
+set nocp incsearch "incremental search show pattern match as you type
+set hlsearch " highlight search results
 set background=light
 colorscheme solarized
 
@@ -25,6 +26,16 @@ colorscheme solarized
 :imap kj <Esc>
 " Map Tagbar (requires exuberant ctags)
 nmap <F8> :TagbarToggle<CR>
+" my simple solucion to match open brackets and parenthesis:
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap ((     (
+inoremap ()     ()
+
 
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
@@ -48,7 +59,6 @@ set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
 " set ts=4  " Tabs are 2 spaces
 " set bs=2  " Backspace over everything in insert mode
 " set shiftwidth=2  " Tabs under smart indent
-set nocp incsearch
 
 set encoding=utf-8
 filetype plugin indent on 
