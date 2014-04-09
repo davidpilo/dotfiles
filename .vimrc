@@ -26,15 +26,6 @@ colorscheme solarized
 :imap kj <Esc>
 " Map Tagbar (requires exuberant ctags)
 nmap <F8> :TagbarToggle<CR>
-" my simple solucion to match open brackets and parenthesis:
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap ((     (
-inoremap ()     ()
 
 
 " Minibuffer Explorer Settings
