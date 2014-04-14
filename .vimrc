@@ -27,15 +27,12 @@ colorscheme solarized
 " Map Tagbar (requires exuberant ctags)
 nmap <F8> :TagbarToggle<CR>
 
+" CtrlP settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+let g:ctrlp_working_path_mode = 'ra' " When invoked, unless a starting directory is specified, CtrlP will set its local working directory according to this variable
 
-" Minibuffer Explorer Settings
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
- 
-" Change which file opens after executing :Rails command
-let g:rails_default_file='config/database.yml'
  
 syntax enable
 set cf  " Enable error files & error jumping.
