@@ -12,7 +12,7 @@ execute pathogen#infect()
 set nocp incsearch "incremental search show pattern match as you type
 set hlsearch " highlight search results
 set background=light
-colorscheme solarized
+" colorscheme solarized
 
 " Add recently accessed projects menu (project plugin)
 "set viminfo^=!
