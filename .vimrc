@@ -14,6 +14,16 @@ set hlsearch " highlight search results
 set background=light
 " colorscheme solarized
 
+
+"" Charset options: always force to UTF-8 {{{
+set fileencoding=utf-8
+set termencoding=utf-8
+set encoding=utf-8
+"" }}}
+" Editin options
+set fileformats=unix,dos,mac
+set list
+set listchars=tab:▸\ ,trail:.,extends:#,eol:¬
 " Add recently accessed projects menu (project plugin)
 "set viminfo^=!
 
@@ -76,10 +86,14 @@ set mouse=a  " Mouse in all modes
 
 
 " Adding this for Nerdtree to autoload
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" Slime configuration to work with tmux
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
