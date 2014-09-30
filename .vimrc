@@ -14,7 +14,6 @@ set hlsearch " highlight search results
 set background=light
 " colorscheme solarized
 
-
 "" Charset options: always force to UTF-8 {{{
 set fileencoding=utf-8
 set termencoding=utf-8
