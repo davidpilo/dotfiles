@@ -1,65 +1,60 @@
-" Adding something for pathogen.vim to work we do this first
-" it is better to do it before enabling syntax and indent.
-" More info here:
-" http://stackoverflow.com/questions/17630393/filetype-on-or-filetype-off
-execute pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'L9'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tmhedberg/matchit'
+Plugin 'majutsushi/tagbar'
+Plugin 'SirVer/ultisnips'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'jpalardy/vim-slime'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-"set nocompatible  " We don't want vi compatibility.
-"colorscheme molokai
-"set guifont=Monaco:h14
-"set antialias
-set nocp incsearch "incremental search show pattern match as you type
-set hlsearch " highlight search results
-set background=light
-" colorscheme solarized
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""General config "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set t_Co=256    " Ponemos que el modo de color sea 256
+set number    " Show line numbers
+set linebreak    " Break lines at word (requires Wrap lines)
+set showbreak=+++   " Wrap-broken line prefix
+set textwidth=100   " Line wrap (number of cols)
+set showmatch    " Highlight matching brace
+
+set hlsearch    " Highlight all search results
+set smartcase    " Enable smart-case search
+set ignorecase    " Always case-insensitive
+set incsearch    " Searches for strings incrementally
+set autoindent    " Auto-indent new lines
+set shiftwidth=4    " Number of auto-indent spaces
+set smartindent    " Enable smart-indent
+set smarttab    " Enable smart-tabs
+set softtabstop=4   " Number of spaces per Tab
+set fileformats=unix,dos,mac
+set list
+set listchars=trail:.,extends:#,eol:¬
 "" Charset options: always force to UTF-8 {{{
 set fileencoding=utf-8
 set termencoding=utf-8
 set encoding=utf-8
-"" }}}
-" Editin options
-set fileformats=unix,dos,mac
-set list
-set listchars=tab:▸\ ,trail:.,extends:#,eol:¬
-" Add recently accessed projects menu (project plugin)
-"set viminfo^=!
+set nocp incsearch "incremental search show pattern match as you type
+set hlsearch " highlight search results
 
-" MAPPINGS
-" Cool little trick to switch buffers to last buffer with F2
-:nnoremap <F2> :b#<Enter>
-" Cool little trick to switch buffers with F5
-:nnoremap <F5> :buffers<CR>:buffer<Space>
-" Maps ESC to kj
-:imap kj <Esc>
-" Map Tagbar (requires exuberant ctags)
-nmap <F8> :TagbarToggle<CR>
-
-" CtrlP settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
-let g:ctrlp_working_path_mode = 'ra' " When invoked, unless a starting directory is specified, CtrlP will set its local working directory according to this variable
-
- 
-syntax enable
-set cf  " Enable error files & error jumping.
-set clipboard+=unnamed  " Yanks go on clipboard instead.
-set history=256  " Number of things to remember in history.
-set autowrite  " Writes on make/shell commands
-set ruler  " Ruler on
-set nu  " Line numbers on
-set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
-" colorscheme vividchalk  " Uncomment this to set a default theme
-" Formatting (some of these are for coding in C and C++)
-" set ts=4  " Tabs are 2 spaces
-" set bs=2  " Backspace over everything in insert mode
-" set shiftwidth=2  " Tabs under smart indent
-
-set encoding=utf-8
-filetype plugin indent on 
-set autoindent
+set timeoutlen=100
 
 " Tabs
 set smarttab
@@ -70,7 +65,7 @@ set tabstop=4
 set shiftwidth=4
 " a combination of spaces and tabs are used to simulate tab stops at a width
 " other than the (hard)tabstop
-set softtabstop=4
+ set softtabstop=4
 
 " Visual
 set showmatch  " Show matching brackets.
@@ -78,14 +73,33 @@ set mat=5  " Bracket blinking.
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
- 
-" gvim specific
-set mousehide  " Hide mouse after chars typed
-set mouse=a  " Mouse in all modes
 
+syntax  enable
+set background=light
+colorscheme solarized
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+    "setglobal bomb
+    set fileencodings=ucs-bom,utf-8,latin1
+endif
 
-" Adding this for Nerdtree to autoload
-" autocmd vimenter * NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""Advanced config"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set ruler
+
+set undolevels=1000
+set backspace=indent,eol,start
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""Mapping de teclas "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap kj <Esc>
+let mapleader=" "
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -93,6 +107,18 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Slime configuration to work with tmux
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+
+" Leader mappings
+map <leader>k :NERDTreeToggle<cr>
+map <leader>b :b#<cr>
+map <leader>d :bdelete<cr>
+
+"let g:netrw_liststyle=3
+
+"vmap <C-c> :w! ~/.sharedvim/.vimbuffer<CR>
+"nmap <C-c> :.w! ~/.sharedvim/.vimbuffer<CR>
+" paste from buffer
+"map <C-y> :r ~/.sharedvim/.vimbuffer<CR>
+
+"let g:ycm_key_list_select_completion = []
+
