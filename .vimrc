@@ -4,9 +4,9 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'L9'
+Plugin 'altercation/vim-colors-solarized'
+"Plugin 'L9'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/syntastic'
