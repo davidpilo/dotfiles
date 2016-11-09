@@ -8,7 +8,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 "Plugin 'L9'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'jiangmiao/auto-pairs'
+"Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-surround'
@@ -16,10 +16,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'majutsushi/tagbar'
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jpalardy/vim-slime'
-Plugin 'honza/vim-snippets'
+"Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 call vundle#end()            " required
@@ -115,6 +115,12 @@ map <leader>k :NERDTreeToggle<cr>
 map <leader>b :b#<cr>
 map <leader>d :bdelete<cr>
 
+" SLIME plugin
+let g:slime_target = "tmux"
+let g:slime_no_mappings = 1
+xmap <leader>j <Plug>SlimeRegionSend
+nmap <leader>j <Plug>SlimeParagraphSend
+
 "let g:netrw_liststyle=3
 
 "vmap <C-c> :w! ~/.sharedvim/.vimbuffer<CR>
@@ -123,4 +129,4 @@ map <leader>d :bdelete<cr>
 "map <C-y> :r ~/.sharedvim/.vimbuffer<CR>
 
 "let g:ycm_key_list_select_completion = []
-
+"let g:UltiSnipsExpandTrigger = "<C-j>"
