@@ -21,7 +21,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jpalardy/vim-slime'
 "Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -129,4 +129,3 @@ nmap <leader>j <Plug>SlimeParagraphSend
 "map <C-y> :r ~/.sharedvim/.vimbuffer<CR>
 
 "let g:ycm_key_list_select_completion = []
-"let g:UltiSnipsExpandTrigger = "<C-j>"
